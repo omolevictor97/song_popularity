@@ -3,5 +3,5 @@ numpy
 seaborn
 plotly
 matplotlib
-scikit-learn==1.3.2
+scikit-learn
 mlflow
