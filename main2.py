@@ -1,4 +1,5 @@
 import pandas as pd
+import joblib
 import streamlit as st
 import numpy as np
 import pickle
@@ -14,8 +15,7 @@ st.markdown(
     unsafe_allow_html = True
 )
 
-model = pickle.load(open("model.pkl", "rb"))
-
+model = joblib.load("model_GB.pkl")
 st.title("Song Popularity")
 
 #Taking Input
@@ -43,22 +43,22 @@ def predict(acousticness, danceability,energy, instrumentalness,
             audio_mode, time_signature, instrumental):
     try:
         input_data ={
-            'numerical__acousticness' : float(acousticness),
-            'numerical__danceability' : float(danceability),
-            'numerical__energy' : float(energy),
-            "numerical__Instrumentalness" : float(instrumentalness),
-            'numerical__liveness' : float(liveness),
-            'numerical__loudness' : float(loudness),
-            'numerical__speechiness' : float(speechiness),
-            "numerical__tempo" : float(tempo),
-            'numerical__audio_valence' : float(audio_valence),
-            'numerical__song_duration_min' : float(song_duration_min),
-            'numerical__audio_intensity' : float(audio_intensity),
-            'numerical__liveness_dance' : float(liveness_dance),
-            'categorical_pipeline__key' : float(key),
-            'categorical_pipeline__audio_mode' : float(audio_mode),
-            'categorical_pipeline__time_signature' : float(time_signature),
-            'categorical_pipeline__instrumental' : float(instrumental)
+            "acousticness" : float(acousticness),
+            "danceability" : float(danceability),
+            "energy" : float(energy),
+            "instrumentalness" : float(instrumentalness),
+            "liveness" : float(liveness),
+            "loudness" : float(loudness),
+            "speechiness" : float(speechiness),
+            "tempo" : float(tempo),
+            "audio_valence" : float(audio_valence),
+            "song_duration_min" : float(song_duration_min),
+            "audio_intensity" : float(audio_intensity),
+            "liveness_dance" : float(liveness_dance),
+            "key" : float(key),
+            "audio_mode" : float(audio_mode),
+            "time_signature" : float(time_signature),
+            "instrumental" : float(instrumental)
         }
 
         data = pd.DataFrame([input_data])
